@@ -5,10 +5,32 @@ var extend = function(to, from) {
 };
 
 var Queue = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+	var newQueue = Object.create(queueMethods)
+	newQueue.nextInLine = 0
+	newQueue.endOfLine = 0
+	newQueue.line = {}
+
+	return newQueue
 };
 
 var queueMethods = {};
+
+queueMethods.enqueue = function(val) {
+	this.line[this.endOfLine] = val
+	this.endOfLine++
+}
+
+queueMethods.dequeue = function() {
+	var removed = this.line[this.nextInLine]
+	delete this.line[this.nextInLine]
+	if (this.nextInLine < this.endOfLine) {
+		this.nextInLine++
+	}
+	return removed
+}
+
+queueMethods.size = function() {
+	return this.endOfLine-this.nextInLine
+}
 
 
