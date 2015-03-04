@@ -1,8 +1,10 @@
 var Stack = function() {
   var newStack = {};
   newStack.storage = {};
-  newStack.size = 0;
-  extend(newStack, Stack.stackMethods);
+  newStack.length = 0;					//size does not work, replaced with length
+  extend(newStack, stackMethods);
+
+  return newStack;
 };
 
 var extend = function(to, from) {
@@ -11,23 +13,23 @@ var extend = function(to, from) {
 	}
 };
 
-var stackMethods = {};
+stackMethods = {};
 
-Stack.stackMethods.push = function(value) {
-	this.storage[this.size] = value;
-	this.size++
+stackMethods.push = function(value) {
+	this.storage[this.length] = value;
+	this.length++
 };
 
-Stack.stackMethods.pop = function() {
-	this.size && this.size--;
-	var res = this.storage[this.size];
-	delete this.storage[this.size];
+stackMethods.pop = function() {
+	this.length && this.length--;
+	var res = this.storage[this.length];
+	delete this.storage[this.length];
 	return res;
 };
 
-Stack.stackMethods.size = function() {
-	return this.size;
-}
+stackMethods.size = function() {
+	return this.length;
+};
 
 
 
