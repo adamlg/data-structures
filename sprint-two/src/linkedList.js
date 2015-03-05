@@ -4,17 +4,17 @@ var LinkedList = function(){
   list.tail = null;
 
   list.addToTail = function(value){
-    var newNode = new Node(value) //create new node with node.value, but node.next is null
+    var newNode = new Node(value)             //create new node with node.value, but node.next is null
     if (this.head === null) {
       this[value] = newNode
-      this.head = newNode            //if there is no existing head, the node added is the head
+      this.head = newNode                     //if there is no existing head, the node added is the head
       this.tail = newNode
     } 
     else {
       this[value] = newNode
       var oldTail = this[this.tail.value]    //find the object that used to be the tail
-      oldTail.next = value                  //change the old tail's next value to point to our new tail
-      this.tail = newNode             //redefine list.tail
+      oldTail.next = value                   //change the old tail's next value to point to our new tail
+      this.tail = newNode                    //redefine list.tail
     }
   };
 
@@ -32,19 +32,21 @@ var LinkedList = function(){
     } 
     else return false
   };
-
   return list;
 };
 
 var Node = function(value){
   var node = {};
-
   node.value = value;
   node.next = null;
-
   return node;
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+
+   addToTail: O(1)
+   removeHead: O(1)
+   contains: O(N)
+
  */
