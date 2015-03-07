@@ -1,11 +1,15 @@
 var BinarySearchTree = function(value){
 	var newBst = {};
 	newBst = Object.create(bstMethods)
-	var firstNode = {}
+	/*var firstNode = {}
 	firstNode.left = []
 	firstNode.right = []
 	firstNode.value = value
 	newBst.storage = [firstNode]; 
+	*/
+	newBst.left = []
+	newBst.right = []
+	newBst.value = value
 
 	return newBst;
 };
@@ -18,22 +22,24 @@ bstMethods.insert = function(value) {
 	var newNode = BinarySearchTree(value)
 
 	var search = function (node) {				
-		if (value > node.value) {				//compare newnode value with firstnode value
+		if (value > node.value) {	
+		console.log(node.right)			//compare newnode value with firstnode value
 			if (node.right.length) {			//look at the right		
-				search(node.right[0])			//recurse on right node if it already exists
+				search(node.right/*[0]*/)			//recurse on right node if it already exists
 			}
-			else node.right.push(newNode.storage[0])		//if right node doesn't exist, push newnode there				
+			else node.right.push(newNode/*.storage[0]*/)		//if right node doesn't exist, push newnode there				
 		}
 		else if (value < node.value) {			//look to the left
+			console.log(node.left)
 			if (node.left.length) {
-				search(node.left[0])
+				search(node.left/*[0]*/)
 			}
-			else node.left.push(newNode.storage[0])
+			else node.left.push(newNode/*.storage[0]*/)
 		}				
 	}
 
-	search(this.storage[0])
-
+	//search(this.storage[0])
+	search(this)
 
 	//function we use for recursion
 
