@@ -27,11 +27,9 @@ var LinkedList = function(){
   };
 
   list.contains = function(target){
-    if (this[target]) {
-      return true
-    } 
-    else return false
+    return (!!this[target])
   };
+  
   return list;
 };
 
