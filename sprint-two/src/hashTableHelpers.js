@@ -50,6 +50,18 @@ var getIndexBelowMaxForKey = function(str, max){
   return hash % max;
 };
 
+var getSecondIndexBelowMaxForKey = function(str, max){
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = (hash<<2) + hash + str.charCodeAt(i);
+    hash = hash & hash; // Convert to 32bit integer
+    hash = Math.abs(hash);
+  }
+  return hash % max;
+};
+
+
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */
